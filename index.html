@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Navbar Project</title>
+
+    <!-- Google Fonts - Importing a stylish font called "Poppins" -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar" class="navbar">
+
+        <!-- Logo / Brand Name -->
+        <div class="logo">✦ Nisha Soni</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skils">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+    <!-- ==================== END NAVBAR ==================== -->
+
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <section id="home" class="section section-home">
+        <div class="section-content">
+            <h1>Hi, I'm<span class="highlight">Nisha Soni</span></h1>
+            <p>Aspiring Frontend &amp; Full Stack Developer — passionate about building beautiful, responsive websites.
+            </p>
+            <a href="#about" class="btn">Explore More ↓</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section section-about">
+        <div class="section-content">
+            <h2>About Me</h2>
+            <p>
+                I'm <strong>Nisha Soni</strong>, a passionate and self-motivated web development learner
+                currently focusing on <strong>Frontend Development</strong> with HTML, CSS, and JavaScript —
+                and working towards becoming a <strong>Full Stack Developer</strong>.
+            </p>
+            <p>
+                I enjoy turning ideas into clean, functional, and visually appealing web experiences.
+                Every project I build helps me grow — this one taught me how <em>Sticky Navbars</em> work!
+            </p>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="Skills" class="section section-skills">
+        <div class="section-content">
+            <h2>🛠️ Skills I'm Learning</h2>
+            <!-- Skills Cards -->
+            <div class="cards">
+                <div class="card">
+                    <span class="card-icon">🌐</span>
+                    <h3>HTML</h3>
+                    <p>Page ka structure banana</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎨</span>
+                    <h3>CSS</h3>
+                    <p>Page ko sundar banana</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚙️</span>
+                    <h3>JavaScript</h3>
+                    <p>Page ko interactive banana</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section section-contact">
+        <div class="section-content">
+            <h2>📬 Get In Touch</h2>
+            <p>Feel free to explore my projects on GitHub. I'm always learning and open to feedback!</p>
+            <!-- GitHub Button -->
+            <a href="https://github.com" target="_blank" class="btn btn-dark">
+                View on GitHub 🐙
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== END CONTENT ==================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
