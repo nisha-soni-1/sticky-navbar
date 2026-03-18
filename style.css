@@ -1,0 +1,381 @@
+/* =====================================================
+   STICKY NAVBAR PROJECT - style.css
+   
+   FILE STRUCTURE:
+   1. CSS Variables (Colors & Fonts)
+   2. Reset & Base Styles
+   3. Navbar - Normal State
+   4. Navbar - Sticky State (JS se add hogi)
+   5. Nav Links
+   6. Hamburger (Mobile Menu)
+   7. Sections (Page Content)
+   8. Cards (Skills Section)
+   9. Buttons
+   10. Responsive (Mobile View)
+===================================================== */
+
+/* 1. CSS VARIABLES  */
+:root {
+  --primary-color: #6c63ff;
+  --dark-color: #1a1a2e;
+  --light-bg: #f4f3ff;
+  --white: #ffffff;
+  --text-color: #444;
+  --shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
+  --font: "Poppins", sans-serif;
+  --navbar-height: 70px; /* Navbar ki height - ek jagah define */
+  --transition: all 0.3s ease; /* Smooth animation speed */
+}
+
+/* 2. RESET & BASE STYLES  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Padding/border width mein count ho */
+}
+
+/* Smooth scrolling   */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text-color);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 3. NAVBAR - NORMAL STATE, transparent background  */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: var(--navbar-height); /* 70px height */
+
+  /* Layout - logo and links */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px; /* Left-right spacing */
+
+  /* Initially transparent background */
+  background: transparent;
+
+  /* Smooth transition - jab sticky class add ho */
+  transition: var(--transition);
+
+  /* Sabse upar dikhni chahiye (z-index) */
+  z-index: 1000;
+}
+
+/* =====================================================
+   4. NAVBAR - STICKY STATE
+   Jab JS "sticky" class add kare, ye styles apply hongi
+   
+   HOW IT WORKS:
+   - User jab scroll karta hai
+   - JS detect karta hai scroll position
+   - Agar scroll > 80px, tab "sticky" class add hoti hai
+   - Yahan wali styles override ho jaati hain
+===================================================== */
+
+.navbar.sticky {
+  /* White background aa jaata hai */
+  background: var(--white);
+
+  /* Neeche shadow aata hai - floating effect */
+  box-shadow: var(--shadow);
+
+  /* Thoda chota ho jaata hai (80px se 65px) */
+  height: 65px;
+}
+
+/* =====================================================
+   5. LOGO
+===================================================== */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  cursor: default;
+}
+
+/* =====================================================
+   6. NAV LINKS
+===================================================== */
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  padding: 5px 0;
+  position: relative; /* ::after pseudo-element ke liye */
+  transition: var(--transition);
+}
+
+/* Underline animation on hover - 
+   pehle width: 0, hover pe width: 100% */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0; /* Initially koi underline nahi */
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease; /* Smooth width change */
+}
+
+/* Hover karo toh underline dikhao */
+.nav-links a:hover::after {
+  width: 100%; /* Full underline */
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.navbar:not(.sticky).logo {
+  color: white;
+}
+
+/* =====================================================
+   8. PAGE SECTIONS
+===================================================== */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-content {
+  max-width: 800px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.section-content h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+}
+
+.section-content p {
+  font-size: 1.1rem;
+  margin-left: 15px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Highlighted text */
+.highlight {
+  color: var(--primary-color);
+  position: relative;
+}
+
+/* =====================================================
+   INDIVIDUAL SECTION BACKGROUNDS
+===================================================== */
+
+/* HOME - Beautiful gradient background */
+.section-home {
+  background: linear-gradient(135deg, #6c63ff 0%, #a855f7 100%);
+  color: white;
+}
+
+.section-home h1,
+.section-home p {
+  color: white;
+}
+
+.section-home .highlight {
+  color: #ffd700; /* Gold color for contrast */
+}
+
+/* ABOUT - Light background */
+.section-about {
+  background: var(--light-bg);
+}
+
+/* SKILLS - White background */
+.section-skills {
+  background: var(--white);
+}
+
+/* CONTACT - Dark background */
+.section-contact {
+  background: var(--dark-color);
+  color: white;
+}
+
+.section-contact h2,
+.section-contact p {
+  color: white;
+}
+
+/* =====================================================
+   9. SKILL CARDS
+===================================================== */
+.cards {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap; /* Mobile pe neeche aa jaayein */
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  border: 2px solid #eee;
+  padding: 35px 30px;
+  width: 180px;
+  /* Hover animation ke liye */
+  transition: var(--transition);
+  cursor: default;
+}
+
+/* Hover pe card upar uthta hai */
+.card:hover {
+  transform: translateY(-8px); /* 8px upar */
+  box-shadow: var(--shadow);
+  border-color: var(--primary-color);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  color: var(--dark-color);
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+/* =====================================================
+   10. BUTTONS
+===================================================== */
+.btn {
+  display: inline-block;
+  padding: 14px 35px;
+  background: white;
+  color: var(--primary-color);
+  border-radius: 50px;
+  font-size: 1rem;
+  margin-top: 25px;
+  /* Hover animation ke liye */
+  transition: var(--transition);
+  border: 2px solid white;
+}
+
+.btn:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-3px); /* Hover pe thoda utha */
+}
+
+/* Dark button - Contact section ke liye */
+.btn-dark {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn-dark:hover {
+  background: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* =====================================================
+   11. RESPONSIVE DESIGN (Mobile View)
+   max-width: 768px = screen 768px se chota ho toh
+===================================================== */
+@media (max-width: 768px) {
+  /* Navbar padding kam karo mobile pe */
+  .navbar {
+    padding: 0 25px;
+  }
+
+  /* Nav links - mobile pe hide initially */
+  .nav-links {
+    /* Fixed position - poore screen pe overlay */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Screen se bahar (right side) */
+    width: 70%;
+    height: 100vh; /* Full height */
+    background: white;
+    flex-direction: column; /* Vertical mein */
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+
+    /* Smooth slide animation */
+    transition: right 0.4s ease;
+    z-index: 999;
+  }
+
+  /* Nav links ke andar links bade dikhein mobile pe */
+  .nav-links a {
+    font-size: 1.2rem;
+    color: var(--dark-color) !important; /* Always dark */
+  }
+
+  /* "open" class JS add karega jab menu open ho */
+  .nav-links.open {
+    right: 0; /* Screen pe aa jaao */
+  }
+
+  /* Hamburger button dikhao mobile pe */
+  .hamburger {
+    display: flex;
+    z-index: 1001; /* Nav links ke upar */
+  }
+
+  /* Cards mobile pe stack ho jaayein */
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 280px;
+  }
+}
