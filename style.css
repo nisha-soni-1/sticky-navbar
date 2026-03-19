@@ -23,15 +23,15 @@
   --text-color: #444;
   --shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
   --font: "Poppins", sans-serif;
-  --navbar-height: 70px; /* Navbar ki height - ek jagah define */
-  --transition: all 0.3s ease; /* Smooth animation speed */
+  --navbar-height: 70px;
+  --transition: all 0.3s ease;
 }
 
 /* 2. RESET & BASE STYLES  */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Padding/border width mein count ho */
+  box-sizing: border-box;
 }
 
 /* Smooth scrolling   */
@@ -55,27 +55,19 @@ ul {
   list-style: none;
 }
 
-/* 3. NAVBAR - NORMAL STATE, transparent background  */
+/* 3. NAVBAR - NORMAL STATE  */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%; /* Full width */
   height: var(--navbar-height); /* 70px height */
-
-  /* Layout - logo and links */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px; /* Left-right spacing */
-
-  /* Initially transparent background */
+  padding: 0 60px;
   background: transparent;
-
-  /* Smooth transition - jab sticky class add ho */
   transition: var(--transition);
-
-  /* Sabse upar dikhni chahiye (z-index) */
   z-index: 1000;
 }
 
@@ -89,21 +81,13 @@ ul {
    - Agar scroll > 80px, tab "sticky" class add hoti hai
    - Yahan wali styles override ho jaati hain
 ===================================================== */
-
 .navbar.sticky {
-  /* White background aa jaata hai */
   background: var(--white);
-
-  /* Neeche shadow aata hai - floating effect */
   box-shadow: var(--shadow);
-
-  /* Thoda chota ho jaata hai (80px se 65px) */
   height: 65px;
 }
 
-/* =====================================================
-   5. LOGO
-===================================================== */
+/* 5. LOGO  */
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -112,9 +96,7 @@ ul {
   cursor: default;
 }
 
-/* =====================================================
-   6. NAV LINKS
-===================================================== */
+/* 6. NAV LINKS  */
 .nav-links {
   display: flex;
   gap: 35px;
@@ -151,14 +133,64 @@ ul {
   color: var(--primary-color);
 }
 
-.navbar:not(.sticky).logo {
+/* Transparent navbar mein links white dikhein */
+.navbar:not(.sticky) .nav-links a {
   color: white;
 }
 
+.navbar:not(.sticky) .logo {
+  color: white;
+}
+
+/* 7. HAMBURGER BUTTON (Mobile Menu)  */
+.hamburger {
+  display: none; /* Desktop pe hide */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Hamburger ki teen lines */
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2.5px;
+  background: var(--dark-color);
+  border-radius: 3px;
+  transition: var(--transition); /* Animation ke liye */
+}
+
+/* Transparent navbar mein hamburger white */
+.navbar:not(.sticky) .hamburger span {
+  background: white;
+}
+
 /* =====================================================
-   8. PAGE SECTIONS
+   HAMBURGER ANIMATION - Jab menu open ho
+   "active" class JS add karega
+   Teen lines X shape mein convert hoti hain
 ===================================================== */
 
+/* Pehli line - upar rotate */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+/* Beech wali line - gayab ho jaati hai */
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* Teesri line - neeche rotate */
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* 8. PAGE SECTIONS  */
 .section {
   min-height: 100vh;
   display: flex;
@@ -167,7 +199,7 @@ ul {
 }
 
 .section-content {
-  max-width: 800px;
+  max-width: 800px; /* Zyada wide nahi hoga */
   padding: 40px 20px;
   text-align: center;
 }
@@ -189,7 +221,7 @@ ul {
 
 .section-content p {
   font-size: 1.1rem;
-  margin-left: 15px;
+  margin-bottom: 15px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -211,6 +243,7 @@ ul {
   color: white;
 }
 
+/* Home section text white hona chahiye */
 .section-home h1,
 .section-home p {
   color: white;
@@ -241,20 +274,19 @@ ul {
   color: white;
 }
 
-/* =====================================================
-   9. SKILL CARDS
-===================================================== */
+/* 9. SKILL CARDS  */
 .cards {
   display: flex;
   gap: 25px;
   justify-content: center;
-  flex-wrap: wrap; /* Mobile pe neeche aa jaayein */
+  flex-wrap: wrap;
   margin-top: 30px;
 }
 
 .card {
   background: white;
   border: 2px solid #eee;
+  border-radius: 16px;
   padding: 35px 30px;
   width: 180px;
   /* Hover animation ke liye */
@@ -262,7 +294,6 @@ ul {
   cursor: default;
 }
 
-/* Hover pe card upar uthta hai */
 .card:hover {
   transform: translateY(-8px); /* 8px upar */
   box-shadow: var(--shadow);
@@ -272,6 +303,7 @@ ul {
 .card-icon {
   font-size: 2.5rem;
   display: block;
+  margin-bottom: 12px;
 }
 
 .card h3 {
@@ -286,15 +318,14 @@ ul {
   margin: 0;
 }
 
-/* =====================================================
-   10. BUTTONS
-===================================================== */
+/* 10. BUTTONS  */
 .btn {
   display: inline-block;
   padding: 14px 35px;
   background: white;
   color: var(--primary-color);
   border-radius: 50px;
+  font-weight: 600;
   font-size: 1rem;
   margin-top: 25px;
   /* Hover animation ke liye */
@@ -321,10 +352,7 @@ ul {
   border-color: var(--primary-color);
 }
 
-/* =====================================================
-   11. RESPONSIVE DESIGN (Mobile View)
-   max-width: 768px = screen 768px se chota ho toh
-===================================================== */
+/* 11. RESPONSIVE DESIGN (Mobile View)  */
 @media (max-width: 768px) {
   /* Navbar padding kam karo mobile pe */
   .navbar {
